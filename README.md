@@ -48,6 +48,6 @@ Example:
    ```
 
 
-The cell will momentarily display Loading..., then return the Coinbase buy or sell price appear in the cells. 
+The cell will momentarily display Loading..., then return the Coinbase buy or sell price.
 
 Original code by  [Muneeb Ali](http://twitter.com/muneeb)
