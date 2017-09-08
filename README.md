@@ -41,6 +41,7 @@ Get Coinbase bitcoin (sell/buy) price in a Google spreadsheet
 - fiat currency: USD or EUR
 - sell or buy price: sell or buy 
 and press Enter.
+
 Example:
    ```
    =coinbase_price("BTC","EUR","sell") 
