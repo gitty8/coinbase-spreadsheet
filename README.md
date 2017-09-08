@@ -49,4 +49,6 @@ Example:
 
 The cell will momentarily display Loading..., then return the Coinbase buy or sell price.
 
+Google sheet example: https://docs.google.com/spreadsheets/d/1FFUWPqRLyMmO1iMSc7-An1clUKI4vEuyHCom5RbVfnA/edit?usp=sharing
+
 Original code by  [Muneeb Ali](http://twitter.com/muneeb)
