@@ -13,23 +13,40 @@ Get Coinbase bitcoin (sell/buy) price in a Google spreadsheet
    }
    ```
 
-   with the code from '[coinbase_fetch.gs](coinbase_fetch.gs)' (simply copy/paste it from '[coinbase_fetch.gs](coinbase_fetch.gs)') 
-
-4. Change the following two variables: 
+   with this code
+      ```
+    function coinbase_price(crypto, fiat, sell_OR_buy) {
+        try {
+            var api_url = "https://api.coinbase.com/v2/prices/" + crypto + "-" + fiat + "/" + sell_OR_buy;
+            var response = UrlFetchApp.fetch(api_url);
+            var data = JSON.parse(response);
+            if (fiat === "EUR") {
+                var fiat_symbol = "€";
+             } else {
+                var fiat_symbol = "$";
+            }
+            return fiat_symbol + data.data.amount;
+        } catch (error) {
+        return "Error";
+        }
+    }
    ```
-   var buy_price_cell = 'E4'
-   var sell_price_cell = 'E3'
+
+4. Go to "File" --> "Rename" and in "Enter new project name" enter something like 'coinbase_price'
+5. Save the script.  
+6. Google will say "Authorization required", give the script the required authorization to run. 
+7. Go back to your spreadsheet window
+9. Click the cell where you want to use the function. Type an equals sign (=) followed by the function name "coinbase_pirce" and set:
+- crypto currency: BTC, ETH or LTC
+- fiat currency: USD or EUR
+- sell or buy price: sell or buy 
+and press Enter.
+Example:
    ```
-   and put the cells (from your Google spreadsheet) where you want the respective prices to appear e.g., 'A1', 'B4' etc. 
-
-5. Go to "File" --> "Rename" and in "Enter new project name" enter something like 'coinbase_price'
-6. Go to "Resources" --> "Current project's triggers" --> and add a new trigger. In "Events" make it "Time-driven" and select the hours/minutes after which you want the price to refresh.  
-7. Google will say "Authorization required", give the script the required authorization to run. 
-8. Go back to your spreadsheet window and reload the 'Script manager', you should see the 'coinbase_price' script there now. 
-
-If you followed these steps correctly, you should now see the Coinbase buy and sell price appear in the cells you entered (in step 4). 
-
-If you have questions, contact [Muneeb Ali](http://twitter.com/muneeb)
+   =coinbase_price("BTC","EUR","sell") 
+   ```
 
 
+The cell will momentarily display Loading..., then return the Coinbase buy or sell price appear in the cells. 
 
+Original code by  [Muneeb Ali](http://twitter.com/muneeb)
